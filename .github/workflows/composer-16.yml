@@ -66,7 +66,7 @@ jobs:
           cd tests/scripts && sh run.sh
 
       - name: Run tests with phpunit
-        if: if: matrix.os == 'windows-latest'
+        if: matrix.os == 'windows-latest'
         run: |
           vendor/bin/phpunit --verbose --colors=always
           cd tests/scripts && sh run-windows.sh
