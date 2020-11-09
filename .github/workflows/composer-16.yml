@@ -6,7 +6,7 @@ name: composer-16
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}-${{ matrix.os }}
+    name: PHP ${{ matrix.composer }}-${{ matrix.php }}-${{ matrix.os }}
 
     env:
       key: cache-v1
@@ -34,6 +34,9 @@ jobs:
           - "1.6.*"
 
     steps:
+      - name: Configure git
+        run: git config --global core.autocrlf false
+
       - name: Checkout
         uses: actions/checkout@v2.3.4
 
