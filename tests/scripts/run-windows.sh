@@ -9,7 +9,7 @@ PLUGIN_SOURCE="$BASEDIR/package.zip"
 # create zip file from package source
 cd $BASEDIR
 rm -f $PLUGIN_SOURCE
-find . -type f | grep -vP '^./.git|^./tests|^./vendor' | zip "$PLUGIN_SOURCE" -@
+find . -type f | grep -vP '^./.git|^./tests|^./vendor' | 7z.exe "$PLUGIN_SOURCE" -@
 cd $TESTDIR
 
 # run tests

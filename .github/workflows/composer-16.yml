@@ -6,7 +6,7 @@ name: composer-16
 
 jobs:
   tests:
-    name: PHP-${{ matrix.php }}-${{ matrix.os }}-${{ matrix.composer }}
+    name: PHP-${{ matrix.php }}-${{ matrix.os }}
 
     env:
       key: cache-v1
@@ -60,9 +60,16 @@ jobs:
         run: composer require --dev "composer/composer:${{ matrix.composer }}" --update-with-dependencies
 
       - name: Run tests with phpunit
+        if: matrix.os == 'ubuntu-latest'
         run: |
           vendor/bin/phpunit --verbose --colors=always
           cd tests/scripts && sh run.sh
+
+      - name: Run tests with phpunit
+        if: if: matrix.os == 'windows-latest'
+        run: |
+          vendor/bin/phpunit --verbose --colors=always
+          cd tests/scripts && sh run-windows.sh
 
       - name: Upload code coverage scrutinizer on Linux php 7.4
         if: matrix.os == 'ubuntu-latest' && matrix.php-version == '7.4'
