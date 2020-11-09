@@ -6,7 +6,7 @@ name: composer-16
 
 jobs:
   tests:
-    name: PHP ${{ matrix.composer }}-${{ matrix.php }}-${{ matrix.os }}
+    name: PHP-${{ matrix.php }}-${{ matrix.os }}-${{ matrix.composer }}
 
     env:
       key: cache-v1
